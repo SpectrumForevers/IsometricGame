@@ -4,15 +4,35 @@ using UnityEngine;
 
 public class Rifle : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] WeaponBase weaponBase;
+    string nameWeapon;
+
+    float damagePerBullet;
+    float reloadTime;
+
+    int countShoot;
+    int countReload;
+    [SerializeField] GameObject spawnBulletPoint;
+    private void Awake()
     {
-        
+        Init();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Init()
     {
-        
+        if (weaponBase == null)
+        {
+            Debug.LogError("Weapon without SO");
+            return;
+        }
+        nameWeapon = weaponBase.GetNameWeapon();
+
+        damagePerBullet = weaponBase.GetDamagePerBullet();
+        reloadTime = weaponBase.GetReloadTime();
+
+        countReload = weaponBase.GetCountReload();
+        countShoot = weaponBase.GetCountShoot();
     }
+
+
 }
