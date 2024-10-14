@@ -15,5 +15,7 @@ MonoBehaviour:
   type: 2
   nameWeapon: Rifle
   damagePerBullet: 5
+  reloadTime: 0
   countShoot: 30
   countReload: 3
+  bulletType: {fileID: 4623641471214478221, guid: cde4ebf207f8fab4c907a1f01990520d, type: 3}

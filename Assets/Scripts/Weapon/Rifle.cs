@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Rifle : MonoBehaviour
@@ -13,6 +14,7 @@ public class Rifle : MonoBehaviour
     int countShoot;
     int countReload;
     [SerializeField] GameObject spawnBulletPoint;
+    GameObject bullet;
     private void Awake()
     {
         Init();
@@ -32,7 +34,11 @@ public class Rifle : MonoBehaviour
 
         countReload = weaponBase.GetCountReload();
         countShoot = weaponBase.GetCountShoot();
+        bullet = weaponBase.GetBulletType();
     }
 
-
+    private void Update()
+    {
+        
+    }
 }

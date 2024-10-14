@@ -15,6 +15,7 @@ public class WeaponBase : ScriptableObject
 
     [SerializeField] int countShoot;
     [SerializeField] int countReload;
+    [SerializeField] GameObject bulletType;
     
     public string GetNameWeapon()
     {
@@ -35,6 +36,10 @@ public class WeaponBase : ScriptableObject
     public int GetCountReload()
     {
         return countReload;
+    }
+    public GameObject GetBulletType()
+    {
+        return bulletType;
     }
 }
 
