@@ -12,6 +12,7 @@ public class Rifle : MonoBehaviour
     float reloadTime;
 
     int countShoot;
+    
     int countReload;
     [SerializeField] GameObject spawnBulletPoint;
     GameObject bullet;
@@ -39,6 +40,29 @@ public class Rifle : MonoBehaviour
 
     private void Update()
     {
-        
+        if(Input.GetMouseButtonDown(0))
+        {
+            Shoot();
+        }
+    }
+    private void Shoot()
+    {
+        GameObject bulletShooted;
+        Rigidbody bulletRB = GetComponent<Rigidbody>();
+
+        bulletShooted = Instantiate(bullet, spawnBulletPoint.transform.position, Quaternion.identity);
+
+        bulletRB = bulletShooted.GetComponent<Rigidbody>();
+        bulletRB.velocity = gameObject.transform.forward * 10;
+
+
+    }
+    private int GetCountReload()
+    {
+        return countReload;
+    }
+    private void SetCountReload(int countReload)
+    {
+        this.countReload = countReload;
     }
 }

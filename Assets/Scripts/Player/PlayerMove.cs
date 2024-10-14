@@ -4,26 +4,28 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
-    public float speed = 5f; // Базовая скорость движения персонажа
-    public float speedMultiplier = 1f; // Множитель скорости для управления
-
-    private Rigidbody rb;
+    public float moveSpeed = 5f;
+    private CharacterController controller; 
 
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
+
+        controller = GetComponent<CharacterController>();
     }
 
     void Update()
     {
-        // Получаем ввод по осям (WASD для движения)
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
 
-        // Вектор движения
-        Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
+        float horizontal = Input.GetAxis("Horizontal"); 
+        float vertical = Input.GetAxis("Vertical");     
+        Vector3 moveDirection = new Vector3(horizontal, 0, vertical);
 
-        // Применяем перемещение к Rigidbody с учетом скорости
-        rb.MovePosition(transform.position + movement * speed * speedMultiplier * Time.deltaTime);
+        if (moveDirection.magnitude > 1)
+        {
+            moveDirection.Normalize();
+        }
+
+        controller.Move(moveDirection * moveSpeed * Time.deltaTime);
     }
+
 }
