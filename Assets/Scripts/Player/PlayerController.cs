@@ -21,16 +21,18 @@ public class PlayerController : MonoBehaviour
         
         if (Physics.Raycast(ray, out hit))
         {
-            
-            Vector3 targetPosition = hit.point;
+            if (hit.transform.gameObject.tag != Tags.player)
+            {
+                Vector3 targetPosition = hit.point;
 
             
-            Vector3 direction = targetPosition - transform.position;
-            direction.y = 0; 
+                Vector3 direction = targetPosition - transform.position;
+                direction.y = 0; 
 
             
-            Quaternion targetRotation = Quaternion.LookRotation(direction);
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+                Quaternion targetRotation = Quaternion.LookRotation(direction);
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+            }
         }
        
     }

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Weapon", menuName = "ScriptableObjects/Weapon", order = 1)]
@@ -12,6 +10,7 @@ public class WeaponBase : ScriptableObject
 
     [SerializeField] float damagePerBullet;
     [SerializeField] float reloadTime;
+    [SerializeField] float cooldownShoot;
 
     [SerializeField] int countShoot;
     [SerializeField] int countReload;
@@ -40,6 +39,14 @@ public class WeaponBase : ScriptableObject
     public GameObject GetBulletType()
     {
         return bulletType;
+    }
+    public WeaponType GetWeaponType()
+    {
+        return type;
+    }
+    public float GetCooldownShoot()
+    {
+        return cooldownShoot;
     }
 }
 
