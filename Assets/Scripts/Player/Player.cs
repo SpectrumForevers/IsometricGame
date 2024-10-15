@@ -12,5 +12,8 @@ public class Player : MonoBehaviour
     [SerializeField] float playerArmor;
 
 
-
+    private void Start()
+    {
+        GameManager.Instance.SetPlayer(gameObject);
+    }
 }
