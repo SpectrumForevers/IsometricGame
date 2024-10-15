@@ -10,8 +10,11 @@ public class Weapon : MonoBehaviour
     float damagePerBullet;
     float reloadTime;
     float cooldownShoot;
-    public int countShoot;
-    
+    float spreadAngle;
+
+
+    int countShoot;
+    int pellets;
     int countReload;
     [SerializeField] GameObject spawnBulletPoint;
     GameObject bullet;
@@ -35,10 +38,12 @@ public class Weapon : MonoBehaviour
         damagePerBullet = weaponBase.GetDamagePerBullet();
         reloadTime = weaponBase.GetReloadTime();
         cooldownShoot = weaponBase.GetCooldownShoot();
+        spreadAngle = weaponBase.GetSpreadAngle();
 
         countReload = weaponBase.GetCountReload();
         countShoot = weaponBase.GetCountShoot();
         bullet = weaponBase.GetBulletType();
+        pellets = weaponBase.GetPellets();
 
         type = weaponBase.GetWeaponType();
         
@@ -56,7 +61,7 @@ public class Weapon : MonoBehaviour
             switch (type)
             {
                 case WeaponType.Pistol:
-
+                    ShootRifle();
                     break;
 
                 case WeaponType.Rifle:
@@ -65,7 +70,7 @@ public class Weapon : MonoBehaviour
                     break;
 
                 case WeaponType.Shotgun:
-                    
+                    ShootShootgun();
                     break;
 
             }
@@ -88,7 +93,7 @@ public class Weapon : MonoBehaviour
         if (shootCoroutine == null && countShoot > 0)
         {
             
-            shootCoroutine = StartCoroutine(ShootCorutine());
+            shootCoroutine = StartCoroutine(ShootRifleCorutine());
         }
     }
     private void StopShoot()
@@ -100,7 +105,7 @@ public class Weapon : MonoBehaviour
         }
         
     }
-    IEnumerator ShootCorutine()
+    IEnumerator ShootRifleCorutine()
     {
         GameObject bulletShooted;
         Rigidbody bulletRB;
@@ -126,6 +131,53 @@ public class Weapon : MonoBehaviour
         }
         yield return null;
     }
+    IEnumerator ShootShotgunCorutine()
+    {
+        // Цикл для создания дробинок (пуль) при каждом выстреле
+        float timeCooldownShoot = cooldownShoot;
+        while (countShoot > 0)
+        {
+            for (int i = 0; i < pellets; i++)
+            {
+                // Создаём пулю
+                GameObject bullet = Instantiate(this.bullet, spawnBulletPoint.transform.position, spawnBulletPoint.transform.rotation);
+
+                // Вычисляем случайный угол разброса в пределах указанного угла spreadAngle
+                float randomX = Random.Range(-spreadAngle, spreadAngle);
+                float randomY = Random.Range(-spreadAngle, spreadAngle);
+                Quaternion randomRotation = Quaternion.Euler(randomX, randomY, 0);
+
+                // Направляем пулю с учётом разброса
+                Rigidbody rb = bullet.GetComponent<Rigidbody>();
+                rb.velocity = randomRotation * spawnBulletPoint.transform.forward * 10;
+                
+                // Можно добавить разрушение пули через некоторое время
+                Destroy(bullet, 2f); // Удаляем пулю через 2 секунды
+                
+            }
+            countShoot--;
+            EventBus.Shoot?.Invoke(countShoot);
+            yield return new WaitForSeconds(timeCooldownShoot);
+        }
+        if (countShoot <= 0)
+        {
+            StopShoot();
+            if (countReload > 0)
+            {
+                StartReload();
+            }
+
+        }
+        yield return null;
+    }
+    void ShootShootgun()
+    {
+        if (shootCoroutine == null && countShoot > 0)
+        {
+            shootCoroutine = StartCoroutine(ShootShotgunCorutine());
+        }
+    }
+
     private void StartReload()
     {
         reloadCoroutine = StartCoroutine(StartReloadCorutine());

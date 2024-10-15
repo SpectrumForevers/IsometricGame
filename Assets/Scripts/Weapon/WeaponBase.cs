@@ -11,9 +11,11 @@ public class WeaponBase : ScriptableObject
     [SerializeField] float damagePerBullet;
     [SerializeField] float reloadTime;
     [SerializeField] float cooldownShoot;
+    [SerializeField] float spreadAngle;
 
     [SerializeField] int countShoot;
     [SerializeField] int countReload;
+    [SerializeField] int pellets;
     [SerializeField] GameObject bulletType;
     
     public string GetNameWeapon()
@@ -32,6 +34,10 @@ public class WeaponBase : ScriptableObject
     {
         return countShoot;
     }
+    public int GetPellets()
+    {
+        return pellets;
+    }
     public int GetCountReload()
     {
         return countReload;
@@ -47,6 +53,10 @@ public class WeaponBase : ScriptableObject
     public float GetCooldownShoot()
     {
         return cooldownShoot;
+    }
+    public float GetSpreadAngle()
+    {
+        return spreadAngle;
     }
 }
 
