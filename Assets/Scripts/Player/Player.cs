@@ -16,4 +16,19 @@ public class Player : MonoBehaviour
     {
         GameManager.Instance.SetPlayer(gameObject);
     }
+
+    public void SetDamage(float damage)
+    {
+
+        if (playerArmor > 0)
+        {
+            float bufarmor = playerArmor;
+            playerArmor -= damage;
+            damage -= bufarmor;
+        }
+        if (playerArmor <= 0)
+        {
+            playerHP -= damage;
+        }
+    }
 }

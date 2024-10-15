@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   nameWeapon: Rifle
-  damagePerBullet: 5
+  damagePerBullet: 500
   reloadTime: 3
   cooldownShoot: 0.5
   spreadAngle: 5

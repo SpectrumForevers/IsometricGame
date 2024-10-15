@@ -27,4 +27,12 @@ public class GameManager : MonoBehaviour
     {
         this.player = player;
     }
+    public List<GameObject> GetListEnemy()
+    {
+        return enemysActive;
+    }
+    public void RemoveEnemyFromList(GameObject enemy)
+    {
+        enemysActive.Remove(enemy);
+    }
 }

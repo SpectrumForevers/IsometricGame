@@ -113,6 +113,7 @@ public class Weapon : MonoBehaviour
         while (countShoot > 0)
         {
             bulletShooted = Instantiate(bullet, spawnBulletPoint.transform.position, Quaternion.identity);
+            bulletShooted.GetComponent<Bullet>().SetDamagePerBullet(damagePerBullet);
             countShoot--;
             EventBus.Shoot?.Invoke(countShoot);
             bulletRB = bulletShooted.GetComponent<Rigidbody>();
@@ -141,7 +142,7 @@ public class Weapon : MonoBehaviour
             {
                 // Создаём пулю
                 GameObject bullet = Instantiate(this.bullet, spawnBulletPoint.transform.position, spawnBulletPoint.transform.rotation);
-
+                bullet.GetComponent<Bullet>().SetDamagePerBullet(damagePerBullet);
                 // Вычисляем случайный угол разброса в пределах указанного угла spreadAngle
                 float randomX = Random.Range(-spreadAngle, spreadAngle);
                 float randomY = Random.Range(-spreadAngle, spreadAngle);
