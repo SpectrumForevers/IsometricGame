@@ -1000,6 +1000,11 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &1501892484 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5430277356953373536, guid: b7f0477a7a2c6424daf7453932d77f85, type: 3}
+  m_PrefabInstance: {fileID: 1710133879549350184}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1504320539
 GameObject:
   m_ObjectHideFlags: 0
@@ -1700,6 +1705,26 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6104533628998212750, guid: b7f0477a7a2c6424daf7453932d77f85, type: 3}
+      propertyPath: weaponActive
+      value: 
+      objectReference: {fileID: 5798679587153117806}
+    - target: {fileID: 6104533628998212750, guid: b7f0477a7a2c6424daf7453932d77f85, type: 3}
+      propertyPath: weapons.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6104533628998212750, guid: b7f0477a7a2c6424daf7453932d77f85, type: 3}
+      propertyPath: weapons.Array.data[0]
+      value: 
+      objectReference: {fileID: 5798679587153117806}
+    - target: {fileID: 6104533628998212750, guid: b7f0477a7a2c6424daf7453932d77f85, type: 3}
+      propertyPath: weapons.Array.data[1]
+      value: 
+      objectReference: {fileID: 1501892484}
+    - target: {fileID: 6104533628998212750, guid: b7f0477a7a2c6424daf7453932d77f85, type: 3}
+      propertyPath: weapons.Array.data[2]
+      value: 
+      objectReference: {fileID: 3419003778731170601}
     - target: {fileID: 6150214269881684994, guid: b7f0477a7a2c6424daf7453932d77f85, type: 3}
       propertyPath: m_Name
       value: LevelLogic
@@ -1757,6 +1782,16 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b7f0477a7a2c6424daf7453932d77f85, type: 3}
+--- !u!1 &3419003778731170601 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 324177587589656494, guid: b7f0477a7a2c6424daf7453932d77f85, type: 3}
+  m_PrefabInstance: {fileID: 1710133879549350184}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5798679587153117806 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6358603485922850787, guid: b7f0477a7a2c6424daf7453932d77f85, type: 3}
+  m_PrefabInstance: {fileID: 1710133879549350184}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
