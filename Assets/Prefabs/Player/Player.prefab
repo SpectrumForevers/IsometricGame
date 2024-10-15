@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 3444320768299835600}
   - component: {fileID: 4176940468750273262}
   - component: {fileID: 2102512724429641467}
-  - component: {fileID: 7629805958342915312}
   - component: {fileID: 5543033428017869088}
+  - component: {fileID: 7629805958342915312}
   - component: {fileID: 3071856950905625487}
   - component: {fileID: 4445411795330807582}
   m_Layer: 0
@@ -112,20 +112,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7629805958342915312
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8369904883836751185}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d85803a04b2691e44b85bf05b51e2551, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 20
-  speedMultiplier: 1
 --- !u!54 &5543033428017869088
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -153,6 +139,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &7629805958342915312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8369904883836751185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d85803a04b2691e44b85bf05b51e2551, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 5
 --- !u!114 &3071856950905625487
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -166,6 +165,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentWeapon: {fileID: 0}
+  mainCamera: {fileID: 0}
+  rotationSpeed: 5
 --- !u!114 &4445411795330807582
 MonoBehaviour:
   m_ObjectHideFlags: 0
