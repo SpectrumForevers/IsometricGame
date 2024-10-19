@@ -17,6 +17,9 @@ MonoBehaviour:
   damagePerBullet: 5
   reloadTime: 3
   cooldownShoot: 0.1
+  spreadAngle: 0
   countShoot: 30
   countReload: 1
+  pellets: 0
   bulletType: {fileID: 4623641471214478221, guid: cde4ebf207f8fab4c907a1f01990520d, type: 3}
+  weaponSoundShoot: {fileID: 4898456389838965290, guid: 9fc109ec8921000439416f72052300e6, type: 3}

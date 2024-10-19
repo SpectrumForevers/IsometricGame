@@ -20,7 +20,7 @@ public class Weapon : MonoBehaviour
     GameObject bullet;
     WeaponType typeWeapon;
     Coroutine shootCoroutine, reloadCoroutine;
-    
+    GameObject soundEffect;
     private void Awake()
     {
         Init();
@@ -44,7 +44,7 @@ public class Weapon : MonoBehaviour
         countShoot = weaponBase.GetCountShoot();
         bullet = weaponBase.GetBulletType();
         pellets = weaponBase.GetPellets();
-
+        soundEffect = weaponBase.GetSoundShoot();
         typeWeapon = weaponBase.GetWeaponType();
         
     }
@@ -55,7 +55,7 @@ public class Weapon : MonoBehaviour
         {
             EventBus.Shoot?.Invoke(countShoot);
         }
-        if(Input.GetMouseButton(0) == true)
+        if(Input.GetMouseButton(0) == true && Time.timeScale > 0f)
         {
             
             switch (typeWeapon)
@@ -112,6 +112,7 @@ public class Weapon : MonoBehaviour
         float timeCooldownShoot = cooldownShoot;
         while (countShoot > 0)
         {
+            Instantiate(soundEffect, Camera.main.transform.position, Quaternion.identity);
             bulletShooted = Instantiate(bullet, spawnBulletPoint.transform.position, Quaternion.identity);
             bulletShooted.GetComponent<Bullet>().SetDamagePerBullet(damagePerBullet);
             countShoot--;
@@ -141,6 +142,7 @@ public class Weapon : MonoBehaviour
             for (int i = 0; i < pellets; i++)
             {
                 // Создаём пулю
+                Instantiate(soundEffect, Camera.main.transform.position, Quaternion.identity);
                 GameObject bullet = Instantiate(this.bullet, spawnBulletPoint.transform.position, spawnBulletPoint.transform.rotation);
                 bullet.GetComponent<Bullet>().SetDamagePerBullet(damagePerBullet);
                 // Вычисляем случайный угол разброса в пределах указанного угла spreadAngle

@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     {
         Instance = this;
         Time.timeScale = 1.0f;
+        AudioListener.volume = PlayerPrefs.GetInt(PlayerPref.sound);
     }
     private void Start()
     {
