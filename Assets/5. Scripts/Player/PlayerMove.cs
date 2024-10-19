@@ -23,8 +23,16 @@ public class PlayerMove : MonoBehaviour
         if (moveDirection.magnitude > 1)
         {
             moveDirection.Normalize();
+            
         }
-
+        if(moveDirection != Vector3.zero)
+        {
+            gameObject.GetComponent<PlayerController>().run = true;
+        }
+        else
+        {
+            gameObject.GetComponent<PlayerController>().run = false;
+        }
         controller.Move(moveDirection * moveSpeed * Time.deltaTime);
     }
 

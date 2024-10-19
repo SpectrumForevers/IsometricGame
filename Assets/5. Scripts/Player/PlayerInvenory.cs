@@ -6,6 +6,7 @@ public class PlayerInvenory : MonoBehaviour
 {
     [SerializeField] GameObject weaponActive;
     [SerializeField] List<GameObject> weapons = new List<GameObject>();
+    [SerializeField] GameObject HandPlayer;
     private int currentWeaponIndex = 0; // Индекс текущего активного оружия
 
     void Start()
@@ -18,7 +19,7 @@ public class PlayerInvenory : MonoBehaviour
     {
         // Получаем значение скролла колеса мыши
         float scrollInput = Input.GetAxis("Mouse ScrollWheel");
-
+        
         if (scrollInput > 0f)
         {
             // Переключение на следующее оружие
@@ -43,6 +44,10 @@ public class PlayerInvenory : MonoBehaviour
         for (int i = 0; i < weapons.Count; i++)
         {
             weapons[i].SetActive(i == index);
+            if (i == index)
+            {
+                gameObject.GetComponent<PlayerController>().SetCurrentWeapon(weapons[i]);
+            }
         }
     }
 }

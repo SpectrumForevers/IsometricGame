@@ -18,7 +18,7 @@ public class Weapon : MonoBehaviour
     int countReload;
     [SerializeField] GameObject spawnBulletPoint;
     GameObject bullet;
-    WeaponType type;
+    WeaponType typeWeapon;
     Coroutine shootCoroutine, reloadCoroutine;
     
     private void Awake()
@@ -45,7 +45,7 @@ public class Weapon : MonoBehaviour
         bullet = weaponBase.GetBulletType();
         pellets = weaponBase.GetPellets();
 
-        type = weaponBase.GetWeaponType();
+        typeWeapon = weaponBase.GetWeaponType();
         
     }
 
@@ -58,7 +58,7 @@ public class Weapon : MonoBehaviour
         if(Input.GetMouseButton(0) == true)
         {
             
-            switch (type)
+            switch (typeWeapon)
             {
                 case WeaponType.Pistol:
                     ShootRifle();
@@ -204,5 +204,9 @@ public class Weapon : MonoBehaviour
     private void SetCountReload(int countReload)
     {
         this.countReload = countReload;
+    }
+    public WeaponType GetTypeWeapon()
+    {
+        return typeWeapon;
     }
 }
